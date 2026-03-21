@@ -143,7 +143,7 @@ function Wardrobe() {
           <div key={cloth.id} style={{background: "white", borderRadius: "16px", overflow: "hidden", boxShadow: "0 2px 10px #0001", position: "relative"}}>
   <div
     onClick={() => toggleFavourite(cloth.id)}
-    style={{position: "absolute", top: "10px", right: "10px", fontSize: "1.5rem", cursor: "pointer", zIndex: 1}}
+    style={{position: "absolute", top: "10px", right: "10px", fontSize: "1.5rem", cursor: "pointer", zIndex: 1, userSelect: "none"}}
   >
     {cloth.is_favourite ? "⭐" : "☆"}
   </div>
