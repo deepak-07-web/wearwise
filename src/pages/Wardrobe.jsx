@@ -13,7 +13,7 @@ function Wardrobe() {
   useEffect(() => { fetchClothes() }, [])
 
   const fetchClothes = async () => {
-    const res = await axios.get("http://127.0.0.1:8000/clothes")
+    const res = await axios.get("https://wearwise-backend-gu9i.onrender.com/clothes")
     setClothes(res.data)
   }
 
@@ -27,13 +27,13 @@ function Wardrobe() {
     if (file) {
       formData.append("file", file)
     }
-    await axios.post("http://127.0.0.1:8000/clothes", formData)
+    await axios.post("https://wearwise-backend-gu9i.onrender.com/clothes", formData)
     fetchClothes()
     setName(""); setType(""); setColor(""); setOccasion(""); setFabric(""); setFile(null)
   }
 
   const deleteCloth = async (id) => {
-    await axios.delete(`http://127.0.0.1:8000/clothes/${id}`)
+    await axios.delete(`https://wearwise-backend-gu9i.onrender.com/clothes/${id}`)
     fetchClothes()
   }
 

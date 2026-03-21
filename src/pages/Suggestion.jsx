@@ -12,7 +12,7 @@ function Suggestion() {
 
   const getSuggestion = async () => {
     setLoading(true)
-    const res = await axios.get(`http://127.0.0.1:8000/suggest?city=${city}&occasion=${occasion}&mood=${mood}&gender=${gender}`)
+    const res = await axios.get(`https://wearwise-backend-gu9i.onrender.com/suggest?city=${city}&occasion=${occasion}&mood=${mood}&gender=${gender}`)
     setMessages([{ role: "assistant", content: res.data.suggestion }])
     setLoading(false)
   }
@@ -23,7 +23,7 @@ function Suggestion() {
     setMessages(newMessages)
     setChatInput("")
     setLoading(true)
-    const res = await axios.post("http://127.0.0.1:8000/chat", { messages: newMessages })
+    const res = await axios.post("hhttps://wearwise-backend-gu9i.onrender.com/chat", { messages: newMessages })
     setMessages([...newMessages, { role: "assistant", content: res.data.reply }])
     setLoading(false)
   }
