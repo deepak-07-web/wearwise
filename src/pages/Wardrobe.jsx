@@ -36,6 +36,10 @@ function Wardrobe() {
     await axios.delete(`https://wearwise-backend-gu9i.onrender.com/clothes/${id}`)
     fetchClothes()
   }
+  const toggleFavourite = async (id) => {
+    await axios.put(`https://wearwise-backend-gu9i.onrender.com/clothes/${id}/favourite`)
+    fetchClothes()
+}
 
   const getEmoji = (type) => {
     const t = type.toLowerCase()
@@ -136,7 +140,13 @@ function Wardrobe() {
 
       <div style={{display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: "20px"}}>
         {clothes.map(cloth => (
-          <div key={cloth.id} style={{background: "white", borderRadius: "16px", overflow: "hidden", boxShadow: "0 2px 10px #0001"}}>
+          <div key={cloth.id} style={{background: "white", borderRadius: "16px", overflow: "hidden", boxShadow: "0 2px 10px #0001", position: "relative"}}>
+  <div
+    onClick={() => toggleFavourite(cloth.id)}
+    style={{position: "absolute", top: "10px", right: "10px", fontSize: "1.5rem", cursor: "pointer", zIndex: 1}}
+  >
+    {cloth.is_favourite ? "⭐" : "☆"}
+  </div>
             {cloth.image_url.includes("placehold") ? (
               <div style={{width: "100%", height: "200px", background: "#f0f4f8", display: "flex", alignItems: "center", justifyContent: "center", fontSize: "5rem"}}>
                 {getEmoji(cloth.type)}
