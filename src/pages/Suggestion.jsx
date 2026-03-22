@@ -19,7 +19,9 @@ function Suggestion() {
 
   const sendMessage = async () => {
     if (!chatInput.trim()) return
-    const newMessages = [...messages, { role: "user", content: chatInput }]
+    const lastAI = messages[messages.length - 1]
+const context = lastAI ? [{ role: "assistant", content: lastAI.content.slice(0, 500) }] : []
+const newMessages = [...context, { role: "user", content: chatInput }]
     setMessages(newMessages)
     setChatInput("")
     setLoading(true)
