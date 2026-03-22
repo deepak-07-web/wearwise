@@ -139,7 +139,7 @@ function Wardrobe() {
       </div>
 
       <div style={{display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: "20px"}}>
-        {clothes.map(cloth => (
+        {[...clothes].sort((a, b) => b.is_favourite - a.is_favourite).map(cloth => (
           <div key={cloth.id} style={{background: "white", borderRadius: "16px", overflow: "hidden", boxShadow: "0 2px 10px #0001", position: "relative"}}>
   <div
     onClick={() => toggleFavourite(cloth.id)}

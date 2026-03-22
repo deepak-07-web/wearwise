@@ -36,29 +36,34 @@ function Suggestion() {
         <h2>Tell us about your day</h2>
         <div style={{display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: "12px", marginBottom: "16px"}}>
           <input placeholder="🌆 Enter your city" value={city} onChange={e => setCity(e.target.value)} />
-          <select value={occasion} onChange={e => setOccasion(e.target.value)}>
-            <option value="">🎯 Select Occasion</option>
-            <option value="college">🎓 College</option>
-            <option value="office">💼 Office</option>
-            <option value="wedding">💍 Wedding</option>
-            <option value="temple">🛕 Temple</option>
-            <option value="gym">💪 Gym</option>
-            <option value="casual">😊 Casual</option>
-            <option value="party">🎉 Party</option>
-          </select>
-          <select value={mood} onChange={e => setMood(e.target.value)}>
-            <option value="">😊 Select Mood</option>
-            <option value="energetic">⚡ Energetic</option>
-            <option value="lazy">😴 Lazy</option>
-            <option value="confident">😎 Confident</option>
-            <option value="relaxed">😌 Relaxed</option>
-          </select>
-          <select value={gender} onChange={e => setGender(e.target.value)}>
-            <option value="">👤 Select Gender</option>
-            <option value="male">Male</option>
-            <option value="female">Female</option>
-            <option value="prefer not to say">Prefer not to say</option>
-          </select>
+
+<input placeholder="🎯 Occasion eg. college, office..." list="occasion-list" value={occasion} onChange={e => setOccasion(e.target.value)} />
+<datalist id="occasion-list">
+  <option value="College" />
+  <option value="Office" />
+  <option value="Wedding" />
+  <option value="Temple" />
+  <option value="Gym" />
+  <option value="Casual" />
+  <option value="Party" />
+</datalist>
+
+<input placeholder="😊 Mood eg. energetic, lazy..." list="mood-list" value={mood} onChange={e => setMood(e.target.value)} />
+<datalist id="mood-list">
+  <option value="Energetic" />
+  <option value="Lazy" />
+  <option value="Confident" />
+  <option value="Relaxed" />
+  <option value="Happy" />
+  <option value="Stressed" />
+</datalist>
+
+<select value={gender} onChange={e => setGender(e.target.value)}>
+  <option value="">👤 Select Gender</option>
+  <option value="male">Male</option>
+  <option value="female">Female</option>
+  <option value="prefer not to say">Prefer not to say</option>
+</select>
         </div>
         <button onClick={getSuggestion} style={{width: "100%", padding: "14px"}}>
           {loading ? "Getting Suggestion..." : "✨ Get AI Suggestion"}
