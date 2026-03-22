@@ -20,12 +20,12 @@ function Suggestion() {
   const sendMessage = async () => {
     if (!chatInput.trim()) return
     const lastAI = messages[messages.length - 1]
-const context = lastAI ? [{ role: "assistant", content: lastAI.content.slice(0, 500) }] : []
-const newMessages = [...context, { role: "user", content: chatInput }]
+    const context = lastAI ? [{ role: "assistant", content: lastAI.content.slice(0, 500) }] : []
+    const newMessages = [...context, { role: "user", content: chatInput }]
     setMessages(newMessages)
     setChatInput("")
     setLoading(true)
-    const res = await axios.post("hhttps://wearwise-backend-gu9i.onrender.com/chat", { messages: newMessages })
+    const res = await axios.post("https://wearwise-backend-gu9i.onrender.com/chat", { messages: newMessages })
     setMessages([...newMessages, { role: "assistant", content: res.data.reply }])
     setLoading(false)
   }
